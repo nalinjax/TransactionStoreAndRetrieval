@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\WexAssignmentSolutionFromNalin\NalinTransactionCommon\NalinTransactionCommon.csproj" />
+    <ProjectReference Include="..\..\WexAssignmentSolutionFromNalin\NalinTransactionPersistence\NalinTransactionPersistence.csproj" />
+  </ItemGroup>
+
 </Project>
