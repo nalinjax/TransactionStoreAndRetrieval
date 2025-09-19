@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NalinTransactionStoreAndRetrieval", "NalinTransactionStoreAndRetrieval.csproj", "{7571006C-5685-48B6-A127-7C6176D20087}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NalinTransactionPersistence", "..\..\WexAssignmentSolutionFromNalin\NalinTransactionPersistence\NalinTransactionPersistence.csproj", "{D2EDF6D4-8772-4E70-9E37-8D7F761C855C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7571006C-5685-48B6-A127-7C6176D20087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7571006C-5685-48B6-A127-7C6176D20087}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7571006C-5685-48B6-A127-7C6176D20087}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2EDF6D4-8772-4E70-9E37-8D7F761C855C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2EDF6D4-8772-4E70-9E37-8D7F761C855C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2EDF6D4-8772-4E70-9E37-8D7F761C855C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2EDF6D4-8772-4E70-9E37-8D7F761C855C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
