@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\WexAssignmentSolutionFromNalin\NalinTransactionCommon\NalinTransactionCommon.csproj" />
-    <ProjectReference Include="..\..\WexAssignmentSolutionFromNalin\NalinTransactionPersistence\NalinTransactionPersistence.csproj" />
+    <ProjectReference Include="..\NalinTransactionCommon\NalinTransactionCommon.csproj" />
+    <ProjectReference Include="..\NalinTransactionPersistence\NalinTransactionPersistence.csproj" />
   </ItemGroup>
 
 </Project>

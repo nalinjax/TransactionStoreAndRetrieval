@@ -5,9 +5,9 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NalinTransactionStoreAndRetrieval", "NalinTransactionStoreAndRetrieval.csproj", "{7571006C-5685-48B6-A127-7C6176D20087}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NalinTransactionPersistence", "..\..\WexAssignmentSolutionFromNalin\NalinTransactionPersistence\NalinTransactionPersistence.csproj", "{D2EDF6D4-8772-4E70-9E37-8D7F761C855C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NalinTransactionPersistence", "..\NalinTransactionPersistence\NalinTransactionPersistence.csproj", "{DC166390-FE1F-40AA-980F-B4DECB7AAB3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NalinTransactionCommon", "..\..\WexAssignmentSolutionFromNalin\NalinTransactionCommon\NalinTransactionCommon.csproj", "{055C782E-88BA-491F-BB62-0B194E9C8947}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NalinTransactionCommon", "..\NalinTransactionCommon\NalinTransactionCommon.csproj", "{74F9F161-5D8E-447D-A47B-0EA2C8B5024C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{7571006C-5685-48B6-A127-7C6176D20087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7571006C-5685-48B6-A127-7C6176D20087}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7571006C-5685-48B6-A127-7C6176D20087}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2EDF6D4-8772-4E70-9E37-8D7F761C855C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2EDF6D4-8772-4E70-9E37-8D7F761C855C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2EDF6D4-8772-4E70-9E37-8D7F761C855C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2EDF6D4-8772-4E70-9E37-8D7F761C855C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{055C782E-88BA-491F-BB62-0B194E9C8947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{055C782E-88BA-491F-BB62-0B194E9C8947}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{055C782E-88BA-491F-BB62-0B194E9C8947}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{055C782E-88BA-491F-BB62-0B194E9C8947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC166390-FE1F-40AA-980F-B4DECB7AAB3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC166390-FE1F-40AA-980F-B4DECB7AAB3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC166390-FE1F-40AA-980F-B4DECB7AAB3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC166390-FE1F-40AA-980F-B4DECB7AAB3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74F9F161-5D8E-447D-A47B-0EA2C8B5024C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74F9F161-5D8E-447D-A47B-0EA2C8B5024C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74F9F161-5D8E-447D-A47B-0EA2C8B5024C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74F9F161-5D8E-447D-A47B-0EA2C8B5024C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
