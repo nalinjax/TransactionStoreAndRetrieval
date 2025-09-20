@@ -1,0 +1,28 @@
+﻿@page
+@model NalinTransactionStoreAndRetrieval.Pages.AddTransactionModel
+@{
+}
+<h2>Add Transaction</h2>
+
+<form method="post">
+    <p>
+        <label asp-for="InputModel.Description">Description</label>
+        <input asp-for="InputModel.Description" />
+        <span asp-validation-for="InputModel.Description"></span>
+    </p>
+    <p>
+        <label asp-for="InputModel.DateTime">Date Time</label>
+        <input asp-for="InputModel.DateTime" type="datetime" />
+        <span asp-validation-for="InputModel.DateTime"></span>
+        <span>(yyyy/mm/dd HH:mm)</span>
+    </p>
+    <p>
+        <label asp-for="InputModel.Amount">Amount</label>
+        <input asp-for="InputModel.Amount" type="number" />
+        <span asp-validation-for="InputModel.Amount"></span>
+        <span>(USD)</span>
+    </p>
+
+    <button type="submit">Submit</button>
+</form>
+

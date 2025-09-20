@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NalinTransactionCommon\NalinTransactionCommon.csproj" />
+    <ProjectReference Include="..\NalinTransactionCurrencyAPI\NalinTransactionCurrencyAPI.csproj" />
     <ProjectReference Include="..\NalinTransactionPersistence\NalinTransactionPersistence.csproj" />
   </ItemGroup>
 
