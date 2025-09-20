@@ -8,14 +8,14 @@ namespace NalinTransactionPersistence
     public interface ITransactionPersistance
     {
         /// <summary>
-        /// Persist transaction
+        /// Persist a single transaction
         /// </summary>
         /// <returns>True if successful</returns>
-        bool Persist(TransactionData transactionData); // persist data - adds
+        bool PersistSingle(TransactionData transactionData); // persist data - adds
 
         /// <summary>
         /// Retrieve all persisted transactions
         /// </summary>
-        List<TransactionData> Retrieve(); // retrieve given the ID
+        List<TransactionData> RetrieveAll(); // retrieve given the ID
     }
 }

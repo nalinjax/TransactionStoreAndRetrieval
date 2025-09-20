@@ -7,24 +7,35 @@ using System.Text.Json;
 namespace NalinTransactionPersistence
 {
     /// <summary>
-    /// Persistance to a file on disk
+    /// Transaction data persistance - get/save
     /// </summary>
-    internal class TransactionPersistanceFile : ITransactionPersistance
+    public class TransactionPersistance : ITransactionPersistance
     {
         private Object locker = new Object();
 
-        //TODO: Add logging
+        IDataPersistance _transactionPersistance;
 
-        public bool Persist(TransactionData transactionData)
+        public TransactionPersistance(IDataPersistance transactionPersistance)
+        {
+            _transactionPersistance = transactionPersistance;
+
+            //TODO: Add logging
+        }
+
+
+        /// <summary>
+        /// Persist a transaction
+        /// </summary>
+        public bool PersistSingle(TransactionData transactionData)
         {
             try
             {
                 var serializedData = JsonSerializer.Serialize(transactionData);
 
-                lock (locker)
+                lock (locker) // ensure consistency of result
                 {
 
-                    AddRecordToFileData(new string[] { serializedData });
+                    AddRecordsToData([serializedData]); // add single
                     return true;
                 }
             }
@@ -36,13 +47,17 @@ namespace NalinTransactionPersistence
             return false;
         }
 
-        public List<TransactionData> Retrieve()
+        /// <summary>
+        /// Retrieve all transactions
+        /// </summary>
+        /// <returns></returns>
+        public List<TransactionData> RetrieveAll()
         {
             try
             {
                 var records = new List<TransactionData>();
 
-                var existingRawRecords = GetFileData();
+                var existingRawRecords = GetAllData();
                 foreach (var rawRecord in existingRawRecords)
                 {
                     var record = JsonSerializer.Deserialize<TransactionData>(rawRecord);
@@ -59,16 +74,16 @@ namespace NalinTransactionPersistence
             return null;
         }
 
-        private string[] GetFileData()
+        // -------------
+
+        private string[] GetAllData()
         {
-            var records = File.ReadAllLines("asds");
-            return records;
+            return _transactionPersistance.GetData();
         }
 
-        private bool AddRecordToFileData(string[] records)
+        private bool AddRecordsToData(string[] records)
         {
-            File.AppendAllLines("asds", records);
-            return true;
+            return _transactionPersistance.AddRecordData(records);
         }
     }
 }

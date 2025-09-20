@@ -1,6 +1,8 @@
 // Author: Nalin Jayasuriya
 // Sep/19/2025 - Jacksonville FL
 
+using NalinTransactionPersistence;
+
 namespace NalinTransactionStoreAndRetrieval
 {
     public class Program
@@ -11,6 +13,11 @@ namespace NalinTransactionStoreAndRetrieval
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+
+            string currentDirectory = Directory.GetCurrentDirectory();
+
+            // register persistance
+            builder.Services.AddSingleton<IDataPersistance>(sp => new FileDataPersistance(Path.Combine(currentDirectory, "DataStorage")));
 
             var app = builder.Build();
 
@@ -30,6 +37,7 @@ namespace NalinTransactionStoreAndRetrieval
             app.UseAuthorization();
 
             app.MapRazorPages();
+
 
             app.Run();
         }

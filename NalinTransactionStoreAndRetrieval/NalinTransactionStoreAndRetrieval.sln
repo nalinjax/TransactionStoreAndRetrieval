@@ -9,6 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NalinTransactionPersistence
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NalinTransactionCommon", "..\NalinTransactionCommon\NalinTransactionCommon.csproj", "{74F9F161-5D8E-447D-A47B-0EA2C8B5024C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{14EEF92B-EEFB-4A05-8874-6FA327F6B3D6}"
+	ProjectSection(SolutionItems) = preProject
+		DataStorage\StrorageLocation.txt = DataStorage\StrorageLocation.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
