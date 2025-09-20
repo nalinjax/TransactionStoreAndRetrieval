@@ -1,6 +1,7 @@
 // Author: Nalin Jayasuriya
 // Sep/19/2025 - Jacksonville FL
 
+using NalinTransactionCurrencyAPI;
 using NalinTransactionPersistence;
 
 namespace NalinTransactionStoreAndRetrieval
@@ -19,13 +20,14 @@ namespace NalinTransactionStoreAndRetrieval
             // register persistence
             builder.Services.AddSingleton<IDataPersistence>(sp => new FileDataPersistence(Path.Combine(currentDirectory, "DataStorage")));
 
-
+            // register transaction persistence
             builder.Services.AddSingleton<ITransactionPersistence>(sp =>
             {
                 var persistence = sp.GetRequiredService<IDataPersistence>();
                 return new TransactionPersistence(persistence);
             });
 
+            builder.Services.AddSingleton<ICurrencyOperationsAPI>(sp => new CurrencyOperationsAPI());
 
             var app = builder.Build();
 

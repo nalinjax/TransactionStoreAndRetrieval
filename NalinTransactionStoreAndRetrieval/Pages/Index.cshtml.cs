@@ -1,6 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
+// Author: Nalin Jayasuriya
+// Sep/19/2025 - Jacksonville FL
+
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using NalinTransactionCommon;
 using NalinTransactionPersistence;
 
 namespace NalinTransactionStoreAndRetrieval.Pages
@@ -12,21 +13,6 @@ namespace NalinTransactionStoreAndRetrieval.Pages
         public IndexModel(ILogger<IndexModel> logger, ITransactionPersistence transactionPersistence)
         {
             _logger = logger;
-
-            // for Testing
-
-            var data = new TransactionData()
-            {
-                Amount = 10,
-                Date = DateTime.UtcNow,
-                Description = "adsd",
-                ID = new Guid().ToString(),
-            };
-
-            transactionPersistence.PersistSingle(data);
-
-            var records = transactionPersistence.RetrieveAll();
-
         }
 
         public void OnGet()

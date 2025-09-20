@@ -4,14 +4,26 @@
 }
 <h2>View Transactions</h2>
 
+<form method="post">
+    <label for="SelectedValue">Select currency for conversion:</label>
+
+    <select asp-for="SelectedCountryCurrency" asp-items="Model.CountryCurrencyList" class="form-control">
+    </select>
+    
+    <button type="submit">Change currency</button>
+</form>
+
+<p>Transactions:</p>
 
 <table class="transactionTable">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>Identifier</th>
             <th>Date time</th>
             <th>Description</th>
-            <th>Amount</th>
+            <th>USD Amount</th>
+            <th>Conversion rate</th>
+            <th>Converted Amount</th>
             <!-- Add other table headers for your properties -->
         </tr>
     </thead>
@@ -22,7 +34,9 @@
                 <td>@item.ID &nbsp;</td>
                 <td>@item.DateTime &nbsp;</td>
                 <td>@item.Description &nbsp;</td>
-                <td>@item.Amount &nbsp;</td>
+                <td>@item.OriginalAmount &nbsp;</td>
+                <td>@item.CurrencyRate &nbsp;</td>
+                <td>@item.ConvertedAmount &nbsp;</td>
             </tr>
         }
     </tbody>
