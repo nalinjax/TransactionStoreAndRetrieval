@@ -1,5 +1,29 @@
-﻿@page
+﻿ @page
 @model NalinTransactionStoreAndRetrieval.Pages.ViewTransactionsModel
 @{
 }
-<div>View Transactions</div>
+<h2>View Transactions</h2>
+
+
+<table class="transactionTable">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date time</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <!-- Add other table headers for your properties -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.DisplayData)
+        {
+            <tr>
+                <td>@item.ID &nbsp;</td>
+                <td>@item.DateTime &nbsp;</td>
+                <td>@item.Description &nbsp;</td>
+                <td>@item.Amount &nbsp;</td>
+            </tr>
+        }
+    </tbody>
+</table> 

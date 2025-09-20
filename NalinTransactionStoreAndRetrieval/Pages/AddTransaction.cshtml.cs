@@ -34,6 +34,9 @@ namespace NalinTransactionStoreAndRetrieval.Pages
             public Decimal Amount { get; set; }
         }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public AddTransactionModel(ITransactionPersistence transactionPersistence)
         {
             _transactionPersistence = transactionPersistence;
