@@ -6,11 +6,11 @@ namespace NalinTransactionPersistence
     /// <summary>
     /// Data persitance - disk file
     /// </summary>
-    public class FileDataPersistance : IDataPersistance
+    public class FileDataPersistence : IDataPersistence
     {
         string _fileName = null;
 
-        public FileDataPersistance(string folderName)
+        public FileDataPersistence(string folderName)
         {
             _fileName = Path.Combine(folderName, "transactions.txt");
         }

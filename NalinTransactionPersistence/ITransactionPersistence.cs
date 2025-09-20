@@ -5,7 +5,7 @@ using NalinTransactionCommon;
 
 namespace NalinTransactionPersistence
 {
-    public interface ITransactionPersistance
+    public interface ITransactionPersistence
     {
         /// <summary>
         /// Persist a single transaction

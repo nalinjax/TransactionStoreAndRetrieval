@@ -16,8 +16,16 @@ namespace NalinTransactionStoreAndRetrieval
 
             string currentDirectory = Directory.GetCurrentDirectory();
 
-            // register persistance
-            builder.Services.AddSingleton<IDataPersistance>(sp => new FileDataPersistance(Path.Combine(currentDirectory, "DataStorage")));
+            // register persistence
+            builder.Services.AddSingleton<IDataPersistence>(sp => new FileDataPersistence(Path.Combine(currentDirectory, "DataStorage")));
+
+
+            builder.Services.AddSingleton<ITransactionPersistence>(sp =>
+            {
+                var persistence = sp.GetRequiredService<IDataPersistence>();
+                return new TransactionPersistence(persistence);
+            });
+
 
             var app = builder.Build();
 

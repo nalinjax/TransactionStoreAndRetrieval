@@ -7,17 +7,21 @@ using System.Text.Json;
 namespace NalinTransactionPersistence
 {
     /// <summary>
-    /// Transaction data persistance - get/save
+    /// Transaction data persistence - get/save
     /// </summary>
-    public class TransactionPersistance : ITransactionPersistance
+    public class TransactionPersistence : ITransactionPersistence
     {
         private Object locker = new Object();
 
-        IDataPersistance _transactionPersistance;
+        IDataPersistence _transactionPersistence;
 
-        public TransactionPersistance(IDataPersistance transactionPersistance)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="transactionPersistence"></param>
+        public TransactionPersistence(IDataPersistence transactionPersistence)
         {
-            _transactionPersistance = transactionPersistance;
+            _transactionPersistence = transactionPersistence;
 
             //TODO: Add logging
         }
@@ -78,12 +82,12 @@ namespace NalinTransactionPersistence
 
         private string[] GetAllData()
         {
-            return _transactionPersistance.GetData();
+            return _transactionPersistence.GetData();
         }
 
         private bool AddRecordsToData(string[] records)
         {
-            return _transactionPersistance.AddRecordData(records);
+            return _transactionPersistence.AddRecordData(records);
         }
     }
 }

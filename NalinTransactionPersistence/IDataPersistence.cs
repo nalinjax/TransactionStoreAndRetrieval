@@ -3,7 +3,7 @@
     // Author: Nalin Jayasuriya
     // Sep/20/2025 - Jacksonville FL
 
-    public interface IDataPersistance
+    public interface IDataPersistence
     {
         /// <summary>
         /// Get all data
