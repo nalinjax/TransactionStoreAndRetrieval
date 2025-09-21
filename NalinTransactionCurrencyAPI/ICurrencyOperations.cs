@@ -1,14 +1,14 @@
 ﻿// Author: Nalin Jayasuriya
 // Sep/19/2025 - Jacksonville FL
 
-using static NalinTransactionCurrencyAPI.CurrencyOperationsAPI;
+using static NalinTransactionCurrencyAPI.CurrencyOperations;
 
 namespace NalinTransactionCurrencyAPI
 {
     /// <summary>
     /// Country-currency operations API
     /// </summary>
-    public interface ICurrencyOperationsAPI
+    public interface ICurrencyOperations
     {
         /// <summary>
         /// Get all supported country-currencies

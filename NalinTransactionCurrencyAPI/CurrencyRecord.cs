@@ -10,5 +10,4 @@ namespace NalinTransactionCurrencyAPI
     {
         public string country_currency_desc { get; set; } // e.g. Australia-Dollar
     }
-
 }

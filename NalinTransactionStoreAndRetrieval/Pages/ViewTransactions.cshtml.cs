@@ -20,7 +20,7 @@ namespace NalinTransactionStoreAndRetrieval.Pages
 
         ITransactionPersistence _transactionPersistence;
 
-        ICurrencyOperationsAPI _currencyOperationsAPI;
+        ICurrencyOperations _currencyOperationsAPI;
 
         /// <summary>
         /// Input fields with validation
@@ -51,7 +51,7 @@ namespace NalinTransactionStoreAndRetrieval.Pages
         /// <summary>
         /// Constructor
         /// </summary>
-        public ViewTransactionsModel(ITransactionPersistence transactionPersistence, ICurrencyOperationsAPI currencyOperationsAPI)
+        public ViewTransactionsModel(ITransactionPersistence transactionPersistence, ICurrencyOperations currencyOperationsAPI)
         {
             _transactionPersistence = transactionPersistence;
             _currencyOperationsAPI = currencyOperationsAPI;

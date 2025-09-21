@@ -27,7 +27,15 @@ namespace NalinTransactionStoreAndRetrieval
                 return new TransactionPersistence(persistence);
             });
 
-            builder.Services.AddSingleton<ICurrencyOperationsAPI>(sp => new CurrencyOperationsAPI());
+            // register currency data provider
+            builder.Services.AddSingleton<ICurrencyDataProvider>(sp => new TreasuryCurrencyDataProvider());
+
+            // register currency operations 
+            builder.Services.AddSingleton<ICurrencyOperations>(sp =>
+            {
+                var provider = sp.GetRequiredService<ICurrencyDataProvider>();
+                return new CurrencyOperations(provider);
+            });
 
             var app = builder.Build();
 
