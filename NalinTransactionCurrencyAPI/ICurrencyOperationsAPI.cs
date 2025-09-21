@@ -5,14 +5,20 @@ using static NalinTransactionCurrencyAPI.CurrencyOperationsAPI;
 
 namespace NalinTransactionCurrencyAPI
 {
+    /// <summary>
+    /// Country-currency operations API
+    /// </summary>
     public interface ICurrencyOperationsAPI
     {
-
         /// <summary>
         /// Get all supported country-currencies
         /// </summary>
 
-        public Task<CurrencyRecord[]> GetAllSupportCurrencies();
+        public Task<CurrencyRecord[]> GetAllSupportedCurrencies();
 
+        /// <summary>
+        /// Get conversion rate for specified currency by date.
+        /// </summary>
+        public Task<string> GetCurrencyRatesForDate(string countryCurrency, DateTime transactionDate, int lookBackMonths);
     }
 }

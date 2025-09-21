@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using NalinTransactionCurrencyAPI;
 using NalinTransactionPersistence;
-using static NalinTransactionCurrencyAPI.CurrencyOperationsAPI;
+
 
 namespace NalinTransactionStoreAndRetrieval.Pages
 {
@@ -16,6 +16,8 @@ namespace NalinTransactionStoreAndRetrieval.Pages
     /// </summary>
     public class ViewTransactionsModel : PageModel
     {
+        const int RatesLookBackMonths = 6;
+
         ITransactionPersistence _transactionPersistence;
 
         ICurrencyOperationsAPI _currencyOperationsAPI;
@@ -27,15 +29,17 @@ namespace NalinTransactionStoreAndRetrieval.Pages
         {
             public string ID { get; set; }
 
+            public string Message { get; set; }
+
             public string Description { get; set; }
 
             public DateTime DateTime { get; set; }
 
-            public Decimal OriginalAmount { get; set; } // original USD amount
+            public string OriginalAmount { get; set; } // original USD amount
 
-            public Decimal CurrencyRate { get; set; } // conversion rate
+            public string CurrencyRate { get; set; } // conversion rate
 
-            public Decimal ConvertedAmount { get; set; } // amount following conversion
+            public string ConvertedAmount { get; set; } // amount following conversion
         }
 
         public List<TransactionDisplay> DisplayData { get; set; } // bound to UI
@@ -68,14 +72,26 @@ namespace NalinTransactionStoreAndRetrieval.Pages
 
             foreach (var transaction in rawRransactionList)
             {
+                var rateValue = _currencyOperationsAPI.GetCurrencyRatesForDate(SelectedCountryCurrency, transaction.Date, RatesLookBackMonths).Result;
+
                 var displayRecord = new TransactionDisplay()
                 {
                     ID = transaction.ID,
                     Description = transaction.Description,
                     DateTime = transaction.Date,
-                    OriginalAmount = transaction.Amount,
-                    //TODO: translate
+                    OriginalAmount = transaction.Amount.ToString(),
                 };
+
+                if (rateValue != null )
+                {
+                    var rate = decimal.Parse(rateValue);
+                    displayRecord.CurrencyRate = rate.ToString();
+                    displayRecord.ConvertedAmount = (rate * transaction.Amount).ToString();
+                }
+                else
+                {
+                    displayRecord.Message = "ERROR - No rate available";
+                }
 
                 DisplayData.Add(displayRecord);
             }
@@ -104,14 +120,14 @@ namespace NalinTransactionStoreAndRetrieval.Pages
             CountryCurrencyList = new List<SelectListItem>();
 
             // for displying in list
-            var allCountryCurrencies = _currencyOperationsAPI.GetAllSupportCurrencies().Result;
+            var allCountryCurrencies = _currencyOperationsAPI.GetAllSupportedCurrencies().Result;
             foreach (var currency in allCountryCurrencies)
             {
                 CountryCurrencyList.Add(new SelectListItem(currency.country_currency_desc, currency.country_currency_desc));
             }
             if (SelectedCountryCurrency == null)
             {
-                SelectedCountryCurrency = CountryCurrencyList.First().Value;
+                SelectedCountryCurrency = CountryCurrencyList.First().Value; // default
             }
         }
     }
