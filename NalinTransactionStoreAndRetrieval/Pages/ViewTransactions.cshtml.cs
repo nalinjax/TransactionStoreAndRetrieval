@@ -86,7 +86,8 @@ namespace NalinTransactionStoreAndRetrieval.Pages
                 {
                     var rate = decimal.Parse(rateValue);
                     displayRecord.CurrencyRate = rate.ToString();
-                    displayRecord.ConvertedAmount = (rate * transaction.Amount).ToString();
+                    var convertedAmount = Math.Round(rate * transaction.Amount, 2); // limit to two decimals
+                    displayRecord.ConvertedAmount = convertedAmount.ToString();
                 }
                 else
                 {

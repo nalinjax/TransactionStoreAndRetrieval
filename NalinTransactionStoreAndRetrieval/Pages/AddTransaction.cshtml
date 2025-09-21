@@ -2,27 +2,55 @@
 @model NalinTransactionStoreAndRetrieval.Pages.AddTransactionModel
 @{
 }
-<h2>Add Transaction</h2>
+<h2>Add Purchase Transaction</h2>
 
 <form method="post">
-    <p>
-        <label asp-for="InputModel.Description">Description</label>
-        <input asp-for="InputModel.Description" />
-        <span asp-validation-for="InputModel.Description"></span>
-    </p>
-    <p>
-        <label asp-for="InputModel.DateTime">Date Time</label>
-        <input asp-for="InputModel.DateTime" type="datetime" />
-        <span asp-validation-for="InputModel.DateTime"></span>
-        <span>(yyyy/mm/dd HH:mm)</span>
-    </p>
-    <p>
-        <label asp-for="InputModel.Amount">Amount</label>
-        <input asp-for="InputModel.Amount" type="number" />
-        <span asp-validation-for="InputModel.Amount"></span>
-        <span>(USD)</span>
-    </p>
+    <table>
+        <tr>
+            <td>
+                <label asp-for="InputModel.Description">Description</label>
+            </td>
+            <td>
+                <input asp-for="InputModel.Description" />
+            </td>
+            <td>
+                <span class="error" asp-validation-for="InputModel.Description"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="InputModel.Date">Date Time</label>
+            </td>
+            <td>
+                <input asp-for="InputModel.Date" type="date" />
+            </td>
+            <td>
+                <span>(mm-dd-yyyy)</span>
+                <span class="error" asp-validation-for="InputModel.Date"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="InputModel.Amount">Amount</label>
+            </td>
+            <td>
+                <input asp-for="InputModel.Amount" type="text" />
+            </td>
+            <td>
+                <span>(USD)</span>
+                <span class="error" asp-validation-for="InputModel.Amount"></span>
+            </td>
+        </tr>
 
-    <button type="submit">Submit</button>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button type="submit">Submit</button>
+            </td>
+            <td>
+            </td>
+        </tr>
+    </table>
 </form>
 

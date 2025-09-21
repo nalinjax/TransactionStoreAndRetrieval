@@ -1,5 +1,5 @@
-{"ID":"98fd4f5a-6162-4bef-850f-63e914b905bf","Description":"10;46a.m.","Date":"2025-09-20T10:46:17.7106182-04:00","Amount":10}
-{"ID":"7ed42b00-b26d-4f57-8ec2-354026cd5825","Description":"10:56","Date":"2025-09-20T14:56:10.921Z","Amount":400}
-{"ID":"00000000-0000-0000-0000-000000000000","Description":"adsd","Date":"2025-09-20T18:39:58.2270468Z","Amount":10}
-{"ID":"00000000-0000-0000-0000-000000000000","Description":"adsd","Date":"2025-09-20T18:40:24.9929672Z","Amount":10}
-{"ID":"00000000-0000-0000-0000-000000000000","Description":"adsd","Date":"2025-09-20T18:41:18.4486654Z","Amount":10}
+{"ID":"295a07d5-932f-4352-86bf-2901c0d8b2b9","Description":"test one","Date":"2025-09-09T00:00:00","Amount":40}
+{"ID":"5edb9c5f-ca79-4863-a889-8db6026a3561","Description":"Sep/21 A","Date":"2025-09-21T00:00:00","Amount":33}
+{"ID":"5edb9c5f-ca79-4863-a889-8db6026a3561","Description":"Description here","Date":"1999-08-21T00:00:00","Amount":33.44}
+{"ID":"5edb9c5f-ca79-4863-a889-8db6026a3561","Description":"Sep/20 A","Date":"2025-09-20T00:00:00","Amount":332323.10}
+{"ID":"e6b51a67-c552-474c-9a98-2b49cd6dadff","Description":"Sep/21 A","Date":"2025-09-23T00:00:00","Amount":2322}

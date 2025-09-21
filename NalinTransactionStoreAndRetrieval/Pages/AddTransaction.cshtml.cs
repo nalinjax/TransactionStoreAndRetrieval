@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using NalinTransactionCommon;
 using NalinTransactionPersistence;
 using System.ComponentModel.DataAnnotations;
+using System.Globalization;
 
 namespace NalinTransactionStoreAndRetrieval.Pages
 {
@@ -24,13 +25,14 @@ namespace NalinTransactionStoreAndRetrieval.Pages
         /// </summary>
         public class TransactionInput
         {
-            [Required, MaxLength(50, ErrorMessage = "Description cannot exceed 50 chars")]
+            [Required, MaxLength(50, ErrorMessage = "Cannot exceed 50 chars")]
             public string Description { get; set; }
 
-            [Required]
-            public DateTime DateTime { get; set; }
+            [Required, MinLength(10, ErrorMessage = "Must be in mm-dd-yyyy format")]
+            public string Date { get; set; }
 
             [Required]
+            [Range(0.01, 9999999999)]
             public Decimal Amount { get; set; }
         }
 
@@ -45,7 +47,7 @@ namespace NalinTransactionStoreAndRetrieval.Pages
         public void OnGet()
         {
             InputModel = new TransactionInput();
-            InputModel.DateTime = DateTime.Now;
+            InputModel.Date = DateTime.Now.ToString("MM-dd-yyyy");
         }
 
         /// <summary>
@@ -53,19 +55,42 @@ namespace NalinTransactionStoreAndRetrieval.Pages
         /// </summary>
         public IActionResult OnPost()
         {
+            // input validation first
+
             if (!ModelState.IsValid)
             {
                 // Handle validation errors, e.g., re-display the form with error messages
                 return Page();
             }
 
-            // save transaction
+            if (InputModel.Description?.Length > 50)
+            {
+                ModelState.AddModelError("Description", "Description length must be <= 50 characters.");
+                return Page();
+            }
+
+            if (InputModel.Amount < 0)
+            {
+                ModelState.AddModelError("Amount", "Amount must be positive.");
+                return Page();
+            }
+
+            DateTime transactionDate;
+            if (!DateTime.TryParseExact(InputModel.Date, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out transactionDate))
+            {
+                ModelState.AddModelError("Date", "Date must be in yyyy/MM/dd format.");
+                return Page();
+            }
+
+            // persist transaction
+
+            var usdAmount = Math.Round(InputModel.Amount, 2); // limit to 2 decimals
 
             var dataToPersist = new TransactionData()
             {
                 Description = InputModel.Description,
-                Amount = InputModel.Amount,
-                Date = InputModel.DateTime,
+                Amount = usdAmount,
+                Date = transactionDate,
                 ID = Guid.NewGuid().ToString()  // associate with a unique ID
             };
 
@@ -73,6 +98,7 @@ namespace NalinTransactionStoreAndRetrieval.Pages
 
             if (!successful)
             {
+                ModelState.AddModelError("", "ERROR: Failed to save transaction! Please inform support team");
                 return Page();
             }
             return RedirectToPage("./Index");
