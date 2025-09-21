@@ -24,3 +24,7 @@ body {
 .error{
     color:red;
 }
+
+.alignRight {
+    text-align: right
+}

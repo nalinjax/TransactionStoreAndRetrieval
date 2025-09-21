@@ -9,5 +9,7 @@ namespace NalinTransactionCurrencyAPI
     internal class CurrencyDataCache
     {
         internal CurrencyRecord[] CountryCurrencies { get; set; }
+
+        internal Dictionary<string, string> CurrencyRates { get; set; }
     }
 }

@@ -33,7 +33,16 @@ namespace NalinTransactionCurrencyAPI
         /// </summary>
         public class RatesRecordWrapper
         {
-            public CurrencyRateRecord[] data { get; set; } 
+            public CurrencyRateRecord[] data { get; set; }
+        }
+
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public CurrencyOperationsAPI()
+        {
+            _currencyDataCache = new CurrencyDataCache();
+            _currencyDataCache.CurrencyRates = new Dictionary<string, string>();
         }
 
         /// <summary>
@@ -43,7 +52,7 @@ namespace NalinTransactionCurrencyAPI
         public async Task<CurrencyRecord[]> GetAllSupportedCurrencies()
         {
             // if in cache, send for better performance
-            if (_currencyDataCache != null)
+            if (_currencyDataCache.CountryCurrencies != null)
             {
                 return _currencyDataCache.CountryCurrencies;
             }
@@ -59,11 +68,8 @@ namespace NalinTransactionCurrencyAPI
             var recordData = await data.Content.ReadAsStringAsync();
             var wrapperData = JsonSerializer.Deserialize<CurrenciesRecordWrapper>(recordData);
 
-            _currencyDataCache = new CurrencyDataCache()
-            {
-                CountryCurrencies = wrapperData.data
-            };
-
+            _currencyDataCache.CountryCurrencies = wrapperData.data; // cache
+            
             return wrapperData.data;
         }
 
@@ -72,6 +78,16 @@ namespace NalinTransactionCurrencyAPI
         /// </summary>
         public async Task<string> GetCurrencyRatesForDate(string countryCurrency, DateTime transactionDate, int lookBackMonths)
         {
+            var transactionDateFormatted = transactionDate.ToString("yyyy-MM-dd");
+
+            var cacheKey = $"{countryCurrency}#{transactionDateFormatted}";
+
+            // if in cache, send for better performance
+            if (_currencyDataCache.CurrencyRates.TryGetValue(cacheKey, out string cachedRate))
+            {
+                return cachedRate;
+            }
+
             var fromDate = transactionDate.AddMonths(-lookBackMonths).ToString("yyyy-MM-dd");
             var toDate = transactionDate.ToString("yyyy-MM-dd");
 
@@ -100,11 +116,14 @@ namespace NalinTransactionCurrencyAPI
             var exactRateRecord = wrapperData.data.FirstOrDefault(d => d.record_date == exactMatchDate);
             if (exactRateRecord != null) 
             {
+                _currencyDataCache.CurrencyRates.Add(cacheKey, exactRateRecord.exchange_rate); // cache
                 return exactRateRecord.exchange_rate; // yey!
             }
 
             // any record is fine, because record are already filtered by acceptable date range (e.g. 6 months)
-            return wrapperData.data.First().exchange_rate;
+            var result = wrapperData.data.First().exchange_rate;
+            _currencyDataCache.CurrencyRates.Add(cacheKey, result); // cache
+            return result;
         }
     }
 }

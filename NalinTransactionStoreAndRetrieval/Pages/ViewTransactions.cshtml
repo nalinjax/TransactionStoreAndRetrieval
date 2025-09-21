@@ -18,12 +18,12 @@
 <table class="transactionTable">
     <thead>
         <tr>
-            <th>Identifier</th>
-            <th>Message</th>
-            <th>Date time</th>
-            <th>Description</th>
-            <th>USD Amount</th>
-            <th>Conversion rate</th>
+            <th>Identifier &nbsp;</th>
+            <th>Message &nbsp;</th>
+            <th>Date time &nbsp;</th>
+            <th>Description &nbsp;</th>
+            <th>USD Amount &nbsp;</th>
+            <th>Conversion rate &nbsp;</th>
             <th>Converted Amount</th>
             <!-- Add other table headers for your properties -->
         </tr>
@@ -36,9 +36,9 @@
                 <td>@item.Message &nbsp;</td>
                 <td>@item.DateTime &nbsp;</td>
                 <td>@item.Description &nbsp;</td>
-                <td>@item.OriginalAmount &nbsp;</td>
-                <td>@item.CurrencyRate &nbsp;</td>
-                <td>@item.ConvertedAmount &nbsp;</td>
+                <td class="alignRight">@item.OriginalAmount &nbsp;</td>
+                <td class="alignRight">@item.CurrencyRate &nbsp;</td>
+                <td class="alignRight">@item.ConvertedAmount &nbsp;</td>
             </tr>
         }
     </tbody>
