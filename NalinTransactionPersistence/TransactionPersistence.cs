@@ -1,6 +1,7 @@
 ﻿// Author: Nalin Jayasuriya
 // Sep/19/2025 - Jacksonville FL
 
+using NalinLogging;
 using NalinTransactionCommon;
 using System.Text.Json;
 
@@ -8,6 +9,7 @@ namespace NalinTransactionPersistence
 {
     /// <summary>
     /// Transaction data persistence - get/save
+    /// Has logging.
     /// </summary>
     public class TransactionPersistence : ITransactionPersistence
     {
@@ -15,17 +17,17 @@ namespace NalinTransactionPersistence
 
         IDataPersistence _transactionPersistence;
 
+        INalinLogger _logger;
+
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="transactionPersistence"></param>
-        public TransactionPersistence(IDataPersistence transactionPersistence)
+        public TransactionPersistence(IDataPersistence transactionPersistence, INalinLogger logger)
         {
             _transactionPersistence = transactionPersistence;
-
-            //TODO: Add logging
+            _logger = logger;
         }
-
 
         /// <summary>
         /// Persist a transaction
@@ -45,7 +47,7 @@ namespace NalinTransactionPersistence
             }
             catch (Exception ex)
             {
-                // TODO: log
+                _logger.Log("Exception", ex.ToString());
             }
 
             return false;
@@ -72,13 +74,13 @@ namespace NalinTransactionPersistence
             }
             catch (Exception ex)
             {
-                // TODO: log
+                _logger.Log("Exception", ex.ToString());
             }
 
             return null;
         }
 
-        // -------------
+        // ------------- private
 
         private string[] GetAllData()
         {

@@ -1,6 +1,7 @@
 // Author: Nalin Jayasuriya
 // Sep/19/2025 - Jacksonville FL
 
+using NalinLogging;
 using NalinTransactionCurrencyAPI;
 using NalinTransactionPersistence;
 
@@ -17,6 +18,9 @@ namespace NalinTransactionStoreAndRetrieval
 
             string currentDirectory = Directory.GetCurrentDirectory();
 
+            // register logging
+            builder.Services.AddSingleton<INalinLogger>(sp => new NalinLogger());
+
             // register persistence
             builder.Services.AddSingleton<IDataPersistence>(sp => new FileDataPersistence(Path.Combine(currentDirectory, "DataStorage")));
 
@@ -24,7 +28,8 @@ namespace NalinTransactionStoreAndRetrieval
             builder.Services.AddSingleton<ITransactionPersistence>(sp =>
             {
                 var persistence = sp.GetRequiredService<IDataPersistence>();
-                return new TransactionPersistence(persistence);
+                var logger = sp.GetRequiredService<INalinLogger>();
+                return new TransactionPersistence(persistence, logger);
             });
 
             // register currency data provider

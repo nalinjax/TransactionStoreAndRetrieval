@@ -54,7 +54,7 @@ namespace NalinTransactionCurrencyAPI
         }
 
         /// <summary>
-        /// Get currency date for data
+        /// Get currency data for date
         /// </summary>
         public async Task<CurrencyRateRecord[]> GetCurrencyRatesForDate(string countryCurrency, DateTime transactionDate, int lookBackMonths)
         {

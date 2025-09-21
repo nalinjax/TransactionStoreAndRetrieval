@@ -15,7 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		DataStorage\transactions.txt = DataStorage\transactions.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NalinTransactionCurrencyAPI", "..\NalinTransactionCurrencyAPI\NalinTransactionCurrencyAPI.csproj", "{B899E5B7-E668-45EC-8873-B2E9102F1F67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NalinTransactionCurrencyAPI", "..\NalinTransactionCurrencyAPI\NalinTransactionCurrencyAPI.csproj", "{B899E5B7-E668-45EC-8873-B2E9102F1F67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NalinLogging", "..\NalinLogging\NalinLogging.csproj", "{8DB42147-D280-4362-A77C-13E09E85E928}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NalinUnitTests", "..\NalinUnitTests\NalinUnitTests.csproj", "{1A6E3F99-B15C-406B-8C69-7024B868C730}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{B899E5B7-E668-45EC-8873-B2E9102F1F67}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B899E5B7-E668-45EC-8873-B2E9102F1F67}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B899E5B7-E668-45EC-8873-B2E9102F1F67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DB42147-D280-4362-A77C-13E09E85E928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB42147-D280-4362-A77C-13E09E85E928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB42147-D280-4362-A77C-13E09E85E928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB42147-D280-4362-A77C-13E09E85E928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A6E3F99-B15C-406B-8C69-7024B868C730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A6E3F99-B15C-406B-8C69-7024B868C730}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A6E3F99-B15C-406B-8C69-7024B868C730}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A6E3F99-B15C-406B-8C69-7024B868C730}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
